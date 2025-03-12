@@ -1,0 +1,52 @@
+// const BASE_URL = process.env.REACT_APP_API_BASE_URL + 'order';
+const BASE_URL_V2 = process.env.REACT_APP_API_BASE_URL_V2;
+
+export const order = {
+  createOrder: `${BASE_URL_V2}order/create`,
+  getLocation: (value) => `${BASE_URL_V2}order/get-area?search_key=${value}`,
+  getListSku: `${BASE_URL_V2}master/products/search`,
+  getOrderDetail: (id) => `${BASE_URL_V2}order/${id}`,
+  getHistoryOrder: (id) => `${BASE_URL_V2}order/${id}/history`,
+  orderList: `${BASE_URL_V2}order`,
+  cancelOrder: (id) => `${BASE_URL_V2}order/${id}/cancel`,
+  cancelOrderWaitingCourier: (id) => `${BASE_URL_V2}order/${id}/in-cancel`,
+  countStatusOrder: `${BASE_URL_V2}order/count`,
+  countOrderSidebar: `${BASE_URL_V2}order/count-sidebar`,
+  returOrder: (id) => `${BASE_URL_V2}order/${id}/in-return`,
+  completedOrder: (id) => `${BASE_URL_V2}order/${id}/complete`,
+  shipOrder: (id) => `${BASE_URL_V2}order/${id}/ship`,
+  processOrder: (id) => `${BASE_URL_V2}order/${id}/process`,
+  bulkProcessOrder: () => `${BASE_URL_V2}order/bulk-to-process`,
+  deliveryInfo: (id) => `${BASE_URL_V2}order/${id}/get-delivery-info`,
+  acceptReturOrder: (id) => `${BASE_URL_V2}order/${id}/returned`,
+  getLocationDropdown: (id) => `${BASE_URL_V2}order/${id}/location-dropdown`,
+  getLocationDropdownWithStock: (id) =>
+    `${BASE_URL_V2}order/${id}/location-dropdown?location_with_stock=1`,
+  getArea: () => `${BASE_URL_V2}order/get-area`,
+  updateOrder: (id) => `${BASE_URL_V2}order/${id}/change-info`,
+  updateAllOrder: (id) => `${BASE_URL_V2}order/${id}/change-all-info`,
+  shippingOrder: () => `${BASE_URL_V2}order/shipping-rates`,
+  acceptCancel: (id) => `${BASE_URL_V2}order/${id}/accept-cancel`,
+  rejectCancel: (id) => `${BASE_URL_V2}order/${id}/reject-cancel`,
+  trackingHistory: (id) => `${BASE_URL_V2}order/${id}/tracking-history`,
+  completeOrder: (id) => `${BASE_URL_V2}order/${id}/complete-order`,
+  getShippingLabel: (id) => `${BASE_URL_V2}order/${id}/label-data`,
+  getUploadHistoryOrder: `${BASE_URL_V2}order/upload-history`,
+  getDetailUploadHistory: (id) => `${BASE_URL_V2}order/upload-history/${id}`,
+  uploadFileOrder: `${BASE_URL_V2}order/upload`,
+  requestDownload: `${BASE_URL_V2}order/request-download`,
+  getDownloadHistoryOrder: `${BASE_URL_V2}order/download-history`,
+  getDetailDownloaddHistory: (id) =>
+    `${BASE_URL_V2}order/download-history/${id}`,
+  parseOrder: `${BASE_URL_V2}order/parse-order`,
+  getCourier: `${BASE_URL_V2}couriers`,
+  bulkRate: `${BASE_URL_V2}order/bulk-rate`,
+  checkBulkRate: (id) => `${BASE_URL_V2}order/bulk-rate/${id}`,
+  checkIndividualRate: (id) => `${BASE_URL_V2}order/${id}/get-shipping-rates`,
+  getCodPercentageByLogistic: (id) =>
+    `${BASE_URL_V2}couriers/${id}/get-cod-percentage`,
+  getCodAllPercentage: (id) =>
+    `${BASE_URL_V2}couriers/${id}/get-cod-percentage`,
+  bulkCompleteOrder: () => `${BASE_URL_V2}order/bulk-to-complete`,
+  calculateInsurance: `${BASE_URL_V2}order/calculate-insurance`,
+};

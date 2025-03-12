@@ -1,0 +1,121 @@
+body {
+  background-color: white;
+  overflow-x: hidden;
+}
+
+.ofEne {
+  overflow: hidden;
+  color: #4c4f54;
+  font-size: 13px;
+  font-weight: normal;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+.form-control::placeholder {
+  color: var(--Text-Black-Medium, #b7c8e6) !important;
+}
+
+.form-control:-ms-input-placeholder {
+  color: var(--Text-Black-Medium, #b7c8e6) !important;
+}
+
+.form-control::-ms-input-placeholder {
+  color: var(--Text-Black-Medium, #b7c8e6) !important;
+}
+
+.skeleton-status-shipping {
+  text-align: -webkit-center;
+}
+
+.custom-wrapper-filtermarketplace:hover {
+  background-color: #e7eaee;
+  border: 1px solid #203864 !important;
+}
+.react-select-container > input {
+  padding: 0px !important;
+}
+
+.react-datepicker__input-container > input{
+  padding: 8px;
+}
+
+.react-select__indicators { display: none; }
+
+input,
+input::placeholder {
+    font: 12px sans-serif;
+    color: #E9E9EA;
+}
+.form-filter {
+  height: 40px
+}
+
+.form-icon, .icon {
+  color: #4C4F54;
+}
+
+.ni-help-fill {
+  color: #DBDFEA;
+}
+
+.ni-reload {
+  color: white;
+}
+
+button > .ni-check, button > .ni-cross {
+  color: white;
+}
+
+p {
+  color: #4C4F54
+}
+.modal-content {
+  border-radius: 16px !important;
+}
+
+span {
+  color: #4C4F54;
+}
+
+@font-face { font-family: Sora; 
+  src: url(../fonts/Sora-SemiBold.ttf);
+} 
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: Sora !important;
+}
+
+.react-datepicker-popper {
+  z-index: 10;
+}
+
+
+.text-overflow-three {
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  line-clamp: 3;
+  -webkit-box-orient: vertical;
+}
+
+.filter-counter {
+  background-color: #FA7B0D;
+  color: white;
+  width: 26px;
+  height: 26px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  border-radius: 50px;
+  font-size: 12;
+  top: 0;
+  left: 0;
+  margin-left: 6px;
+  margin-top: -15px;
+}
+
+.p-checkbox-input {
+  display: none;
+}

@@ -1,0 +1,35 @@
+version: 0.2
+phases:
+  install:
+    commands:
+      - curl -fsSL https://raw.githubusercontent.com/thii/aws-codebuild-extras/master/install >> extras.sh
+      - . ./extras.sh
+  pre_build:
+    commands:
+      - WAIZ_IMAGE_REPO_NAME="op-apps-frontend" #adjust from repoName
+      - WAIZ_REPO_NAMESPACE="production"
+      - echo AWS set credentials
+      - aws configure set aws_access_key_id $WAIZ_AWS_ACCESS_KEY_ID; aws configure set aws_secret_access_key $WAIZ_AWS_SECRET_ACCESS_KEY; aws configure set default.region $AWS_DEFAULT_REGION
+      - echo Login to ECR
+      - aws ecr get-login-password --region $AWS_DEFAULT_REGION | docker login --username AWS --password-stdin $CODEBUILD_ACCOUNT_ID.dkr.ecr.$AWS_DEFAULT_REGION.amazonaws.com
+      - echo Login to EKS
+      - aws eks --region $AWS_DEFAULT_REGION update-kubeconfig --name $WAIZ_EKS_CLUSTER_NAME
+      - REPOSITORY_URI=$CODEBUILD_ACCOUNT_ID.dkr.ecr.$AWS_DEFAULT_REGION.amazonaws.com/$WAIZ_ORG_REPO_NAME/$WAIZ_IMAGE_REPO_NAME
+      # - for production use IMAGE_TAG=$CODEBUILD_GIT_TAG
+      - IMAGE_TAG=$CODEBUILD_GIT_TAG
+  build:
+    commands:
+      - cat .github/deployment/$WAIZ_REPO_NAMESPACE/.env > .env
+      - echo Build started on `date`
+      - echo Building the Docker image...
+      - docker build -t $REPOSITORY_URI:$IMAGE_TAG -f .github/deployment/$WAIZ_REPO_NAMESPACE/Dockerfile .
+  post_build:
+    commands:
+      - echo Build completed on `date`
+      - echo Pushing the Docker images...
+      - docker push $REPOSITORY_URI:$IMAGE_TAG
+      # - echo Get Digest Image of the Docker images... ; sleep 3
+      # - SHA_IMAGE_TAG=$(aws ecr describe-images --repository-name $WAIZ_ORG_REPO_NAME/$WAIZ_IMAGE_REPO_NAME --image-ids imageTag=$IMAGE_TAG | jq '.imageDetails[0].imageDigest' | sed 's/\"//g') 
+      - echo Applying changes to deployment
+      - sed -i.bak "s|DOCKER_IMAGE|$REPOSITORY_URI:$IMAGE_TAG|g" .github/deployment/$WAIZ_REPO_NAMESPACE/deployment.yaml
+      - kubectl apply -f .github/deployment/$WAIZ_REPO_NAMESPACE/deployment.yaml -n $WAIZ_REPO_NAMESPACE

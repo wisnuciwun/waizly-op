@@ -1,0 +1,60 @@
+// table data style
+//////////////////////////
+.product-table {
+  &-card {
+    display: flex;
+    align-items: center;
+  }
+  &-info {
+    margin-left: 1rem;
+    font-weight: 700;
+    color: #4c4f54;
+    font-size: 15px;
+    line-height: 22px;
+    letter-spacing: 0em;
+  }
+  &-type {
+    border-radius: 5px;
+    padding: 3px;
+    padding-left: 14px;
+    padding-right: 15px;
+    font-size: 15px;
+    font-weight: 700;
+    line-height: 20px;
+    letter-spacing: 0em;
+  }
+  &-currency {
+    color: $base-color;
+    font-weight: bolder;
+    font-size: 15px;
+  }
+
+  &-icon {
+    width: 150px;
+    height: 100px;
+  }
+  &-type-single {
+    background-color: #e1effa;
+    border-radius: 5px;
+    padding: 3px;
+    padding-left: 14px;
+    padding-right: 15px;
+    font-size: 14px;
+    font-weight: 700;
+    line-height: 20px;
+    letter-spacing: 0em;
+    color: #0372d9;
+  }
+  &-type-bundling {
+    background-color: #d5fdff;
+    border-radius: 5px;
+    padding: 3px;
+    padding-left: 14px;
+    padding-right: 15px;
+    font-size: 14px;
+    font-weight: 700;
+    line-height: 20px;
+    letter-spacing: 0em;
+    color: #00a7e1;
+  }
+}

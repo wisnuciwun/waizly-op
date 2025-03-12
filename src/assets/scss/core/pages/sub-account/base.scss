@@ -1,0 +1,22 @@
+.padding {
+  &-wrapper {
+    padding: 10px 20px;
+  }
+  &-child {
+    padding: 10px 0px;
+  }
+}
+
+.listcheckbox {
+  height: 40px;
+  gap: 16px;
+  padding: 10px 0px;
+  font-size: 12px;
+}
+
+.headercheckboxtitle {
+  line-height: 13.2px;
+  letter-spacing: 2.2px;
+  font-size: 11px;
+  font-weight: 700;
+}

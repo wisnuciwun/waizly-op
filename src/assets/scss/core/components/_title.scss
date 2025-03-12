@@ -1,0 +1,16 @@
+/// Titles/Headings
+///////////////////////////
+
+// Page Title
+.page-title {
+  font-family: $page-title-ff;
+  font-size: $page-title-fs;
+  font-weight: $page-title-fw;
+  color: #203864 !important;
+}
+
+@media (min-width: 992px) {
+  .page-title {
+    font-size: $page-title-fs-lg;
+  }
+}

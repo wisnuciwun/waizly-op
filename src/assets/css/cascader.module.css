@@ -1,0 +1,43 @@
+.popupstyle {
+    background: white;
+    height: 200px;
+    border-radius: 6px;
+    width: 40% !important;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+.labelstyle{
+  font-weight: bold;
+}
+.required{
+  color: #FF6E5D;
+}
+
+.stickylabeliconstyle {
+  color: #4C4F54 !important;  
+  font-weight: bold !important;
+}
+
+@media (max-width: 1200px) {
+  .popupstyle {
+      width: 50% !important;
+  }
+}
+
+@media (max-width: 992px) {
+  .popupstyle {
+      width: 60% !important;
+  }
+}
+
+@media (max-width: 768px) {
+  .popupstyle {
+      width: 80% !important;
+  }
+}
+
+@media (max-width: 576px) {
+  .popupstyle {
+      width: 90% !important;
+  }
+}

@@ -1,0 +1,9 @@
+.field-input-border {
+  &-primary {
+    border-color: none;
+
+    &:focus {
+      border-color: #203864;
+    }
+  }
+}

@@ -1,0 +1,11 @@
+.field {
+  transition: transform 0.5s ease-in-out;
+}
+
+.switchedLeft {
+  transform: translateX(-119.5%);
+}
+
+.switchedRight {
+  transform: translateX(119.5%);
+}

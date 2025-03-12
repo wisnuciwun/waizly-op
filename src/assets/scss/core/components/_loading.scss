@@ -1,0 +1,10 @@
+.loading-wrapper {
+    display: grid;
+    place-items: center;
+    height: 100vh;
+}
+
+.loading-card {
+    width: fit-content;
+    text-align: center;
+}

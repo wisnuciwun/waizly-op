@@ -1,0 +1,138 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: op-apps-frontend
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: op-apps-frontend
+  template:
+    metadata:
+      labels:
+        app: op-apps-frontend
+    spec:
+      containers:
+      - name: op-apps-frontend
+        image: DOCKER_IMAGE
+        imagePullPolicy: Always
+        ports:
+        - containerPort: 3000
+        resources:
+          requests:
+            cpu: 50m
+            memory: 128Mi
+          limits:
+            cpu: 500m
+            memory: 1Gi         
+        livenessProbe:
+          httpGet:
+            path: /
+            port: 3000
+          initialDelaySeconds: 5
+          periodSeconds: 60
+          timeoutSeconds: 5
+          successThreshold: 1
+          failureThreshold: 3
+        readinessProbe:
+          httpGet:
+            path: /
+            port: 3000
+          initialDelaySeconds: 5
+          periodSeconds: 60
+          timeoutSeconds: 5
+          successThreshold: 1
+          failureThreshold: 3
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: op-apps-frontend
+spec:
+  type: ClusterIP
+  ports:
+  - port: 80
+    targetPort: 3000
+  selector:
+    app: op-apps-frontend
+---
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: op-apps-frontend
+spec:
+  ingressClassName: nginx
+  rules:
+  - host: "stag-app.bebaskirim.com"
+    http:
+      paths:
+      - pathType: Prefix
+        path: "/"
+        backend:
+          service:
+            name: op-apps-frontend
+            port:
+              number: 80   
+---
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: op-apps-frontend-main
+spec:
+  ingressClassName: nginx
+  rules:
+  - host: "stag.bebaskirim.com"
+    http:
+      paths:
+      - pathType: Prefix
+        path: "/"
+        backend:
+          service:
+            name: bebaskirim-com-external
+            port:
+              number: 80
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: bebaskirim-com-external
+spec:
+ ports:
+    - protocol: TCP
+      port: 80
+      targetPort: 80
+---
+kind: Endpoints
+apiVersion: v1
+metadata:
+  name: bebaskirim-com-external
+subsets:
+  - addresses:
+      - ip: 103.147.154.173
+    ports:
+      - port: 80         
+---
+apiVersion: autoscaling/v2
+kind: HorizontalPodAutoscaler
+metadata:
+  name: op-apps-frontend
+spec:
+  scaleTargetRef:
+    apiVersion: apps/v1
+    kind: Deployment
+    name: op-apps-frontend
+  minReplicas: 2
+  maxReplicas: 3
+  metrics:
+  - type: Resource
+    resource:
+      name: cpu
+      target:
+        type: Utilization
+        averageUtilization: 80
+  - type: Resource
+    resource:
+      name: memory
+      target:
+        type: Utilization
+        averageUtilization: 80

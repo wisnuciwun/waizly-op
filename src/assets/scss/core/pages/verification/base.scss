@@ -1,0 +1,42 @@
+.inputOtp {
+    height: 50px;
+    padding: 11.5px 12px;
+    border-radius: 4px;
+    width: 50px;
+    text-align: center;
+    border: 1px solid var(--Text-Black-Medium, #E9E9EA);
+     &.error {
+        border: 1px solid var(--Text-Black-Medium, #FF6E5D);
+        height: 50px;
+        padding: 11.5px 12px;
+        border-radius: 4px;
+        width: 50px;
+        text-align: center;
+        color: black;
+     }
+
+}
+
+.normalValidation{
+    display: none;
+}
+
+.isErrorValidation {
+    font-size: 0.875em;
+    color: #FF6E5D;
+ }
+
+.wrapperOtp{
+    gap: 20px;
+    justify-content: space-between;
+    display: flex;
+}
+
+@media (max-width:480px){
+    .wrapperOtp{
+        margin-bottom: 1rem;
+        gap: 0px;
+        justify-content: space-between;
+        display: flex;
+    }
+}

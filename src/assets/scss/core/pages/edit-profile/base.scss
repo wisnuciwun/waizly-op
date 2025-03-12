@@ -1,0 +1,32 @@
+.wrapper {
+  &-bg-light {
+    background-color: #ffffff;
+    padding: 24px;
+  }
+}
+
+.text-style {
+  &-header {
+    font-weight: 700;
+    font-size: 18px;
+    line-height: 28px;
+  }
+  &-sub-text-labels {
+    font-size: 12px;
+    line-height: 20px;
+    font-weight: 400;
+  }
+}
+
+.text-color {
+  &-primary-text {
+    color: #203864;
+  }
+  &-danger {
+    color: #ff6e5d;
+  }
+}
+
+.divider-edit-profile {
+  border-bottom: 1px solid #e9e9ea;
+}

@@ -1,0 +1,24 @@
+.card-wrapper{
+    width: 480px;
+}
+
+.isShowValidationPassword{
+    margin: 0px;
+    text-align: start;
+}
+
+@media (max-width:480px){
+    .card-priview{
+    padding: 0px;
+    }
+
+    .container {
+        padding: 8px;
+    }
+}
+
+@media (max-width:1024px){
+    .card-wrapper{
+        width: 100%;
+    }
+}

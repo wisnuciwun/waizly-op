@@ -1,0 +1,70 @@
+.btn {
+  &-primary {
+    background-color: #203864;
+    border-color: #203864;
+    &:hover em.icon {
+      color: white !important; 
+    }
+    
+    &:hover {
+      background-color: #203864;
+      border-color: #203864;
+    }
+    &:active {
+      background-color: #203864 !important;
+    }
+    &:focus {
+      background-color: #203864 !important;
+    }
+  }
+
+  &-outline-primary-v2 {
+    border-color: #203864;
+    color: #203864;
+    em.icon {
+      color: #203864;
+    }
+    &:hover em.icon {
+      color: white !important; 
+    }
+    
+    &:hover {
+      background-color: #203864;
+      border-color: #203864;
+      color: white 
+    }
+    &:active {
+      background-color: #203864 !important;
+    }
+    &:focus {
+      background-color: #203864 !important;
+    }
+  }
+
+  &-disabled {
+    background-color: #e9e9ea;
+    border-color: #e9e9ea;
+    color: white;
+
+    &:hover {
+      background-color: #e9e9ea;
+      border-color: #e9e9ea;
+      color: white;
+    }
+    &:active {
+      background-color: #e9e9ea !important;
+      color: white !important;
+    }
+    &:focus {
+      background-color: #e9e9ea !important;
+      color: white !important;
+    }
+
+    &.disabled {
+      background-color: #e9e9ea;
+      border-color: #e9e9ea;
+      color: white;
+      pointer-events: none;
+    }
+  }
+}
